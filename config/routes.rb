@@ -12,18 +12,15 @@ Rails.application.routes.draw do
     resource :password_reset,     only: [:new, :edit, :create, :update]
   end
 
-  # Authenticated routes
-  authenticated :user do
-    root "dashboard#index", as: :authenticated_root
-    get "dashboard", to: "dashboard#index"
-    
-    resources :properties do
-      resources :transactions, only: [:index, :new, :create, :edit, :update, :destroy]
-    end
-  end
-
-  # Public root
+  # Main routes
   root "home#index"
+  
+  # Dashboard and property management (require authentication)
+  get "dashboard", to: "dashboard#index"
+  
+  resources :properties do
+    resources :transactions, only: [:index, :new, :create, :edit, :update, :destroy]
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

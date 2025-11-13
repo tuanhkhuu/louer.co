@@ -1,23 +1,62 @@
-<p style="color: green"><%= notice %></p>
+<div class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Hero Section -->
+    <div class="text-center">
+      <h1 class="text-5xl font-bold text-gray-900 mb-6">
+        Welcome to <span class="text-indigo-600">Louer.co</span>
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        Your comprehensive property finance tracker. Manage rental income, track expenses, and monitor your real estate portfolio performance - all in one place.
+      </p>
+      <div class="flex gap-4 justify-center">
+        <%= link_to "Sign In", sign_in_path, class: "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm" %>
+        <%= link_to "Get Started", sign_up_path, class: "inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 shadow-sm" %>
+      </div>
+    </div>
 
-<p>Signed as <%= Current.user.email %></p>
+    <!-- Features Section -->
+    <div class="mt-24 grid grid-cols-1 gap-8 md:grid-cols-3">
+      <div class="bg-white p-8 rounded-lg shadow-sm">
+        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white mb-4">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-medium text-gray-900 mb-2">Property Management</h3>
+        <p class="text-gray-600">Track multiple properties with detailed information including purchase price, location, and property type.</p>
+      </div>
 
-<h2>Login and verification</h2>
+      <div class="bg-white p-8 rounded-lg shadow-sm">
+        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mb-4">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-medium text-gray-900 mb-2">Income & Expense Tracking</h3>
+        <p class="text-gray-600">Record rental income and expenses with detailed categorization for accurate financial reporting.</p>
+      </div>
 
-<div>
-  <%= link_to "Change password", edit_password_path %>
+      <div class="bg-white p-8 rounded-lg shadow-sm">
+        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white mb-4">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-medium text-gray-900 mb-2">Portfolio Analytics</h3>
+        <p class="text-gray-600">View comprehensive dashboards with cash flow analysis, ROI calculations, and portfolio performance metrics.</p>
+      </div>
+    </div>
+
+    <!-- Demo Info -->
+    <div class="mt-24 bg-indigo-50 rounded-lg p-8 text-center">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Try the Demo</h2>
+      <p class="text-gray-600 mb-4">
+        Test drive the application with our demo account:
+      </p>
+      <div class="bg-white rounded-md p-4 inline-block">
+        <p class="text-sm text-gray-600 mb-2"><strong>Email:</strong> demo@louer.co</p>
+        <p class="text-sm text-gray-600"><strong>Password:</strong> password123456</p>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div>
-  <%= link_to "Change email address", edit_identity_email_path %>
-</div>
-
-<h2>Access history</h2>
-
-<div>
-  <%= link_to "Devices & Sessions", sessions_path %>
-</div>
-
-<br>
-
-<%= button_to "Log out", Current.session, method: :delete %>
