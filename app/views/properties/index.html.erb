@@ -1,0 +1,52 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="sm:flex sm:items-center sm:justify-between mb-8">
+    <div>
+      <h1 class="text-3xl font-bold text-gray-900">Properties</h1>
+      <p class="mt-2 text-sm text-gray-600">Manage your real estate portfolio</p>
+    </div>
+    <div class="mt-4 sm:mt-0">
+      <%= link_to "Add Property", new_property_path, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700" %>
+    </div>
+  </div>
+
+  <% if @properties.any? %>
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <% @properties.each do |property| %>
+        <%= link_to property, class: "block" do %>
+          <div class="bg-white overflow-hidden shadow rounded-lg hover:shadow-md transition-shadow">
+            <div class="px-4 py-5 sm:p-6">
+              <h3 class="text-lg font-medium text-gray-900"><%= property.name %></h3>
+              <p class="mt-1 text-sm text-gray-500"><%= property.property_type %></p>
+              <% if property.address.present? %>
+                <p class="mt-2 text-sm text-gray-600 line-clamp-2"><%= property.address %></p>
+              <% end %>
+              <dl class="mt-4 grid grid-cols-2 gap-4">
+                <div>
+                  <dt class="text-xs font-medium text-gray-500">Purchase Price</dt>
+                  <dd class="mt-1 text-sm font-semibold text-gray-900"><%= number_to_currency(property.purchase_price) %></dd>
+                </div>
+                <div>
+                  <dt class="text-xs font-medium text-gray-500">Cash Flow</dt>
+                  <dd class="mt-1 text-sm font-semibold <%= property.net_cash_flow >= 0 ? 'text-green-600' : 'text-red-600' %>">
+                    <%= number_to_currency(property.net_cash_flow) %>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="text-center py-12 bg-white rounded-lg shadow">
+      <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+      </svg>
+      <h3 class="mt-2 text-sm font-medium text-gray-900">No properties</h3>
+      <p class="mt-1 text-sm text-gray-500">Get started by adding your first property.</p>
+      <div class="mt-6">
+        <%= link_to "Add Property", new_property_path, class: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700" %>
+      </div>
+    </div>
+  <% end %>
+</div>
