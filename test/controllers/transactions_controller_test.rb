@@ -1,18 +1,25 @@
 require "test_helper"
 
 class TransactionsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @user = users(:lazaro_nixon)
+    @property = properties(:one)
+    @transaction = transactions(:one)
+    post sign_in_url, params: { email: @user.email, password: "Secret1*3*5*" }
+  end
+
   test "should get index" do
-    get transactions_index_url
+    get property_transactions_url(@property)
     assert_response :success
   end
 
   test "should get new" do
-    get transactions_new_url
+    get new_property_transaction_url(@property)
     assert_response :success
   end
 
   test "should get edit" do
-    get transactions_edit_url
+    get edit_property_transaction_url(@property, @transaction)
     assert_response :success
   end
 end

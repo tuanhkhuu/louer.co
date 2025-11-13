@@ -1,17 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
-  name: MyString
-  address: MyText
-  property_type: MyString
-  purchase_price: 9.99
-  purchase_date: 2025-11-13
+  user: lazaro_nixon
+  name: Test Property
+  address: 123 Test St, San Francisco, CA 94102
+  property_type: Single Family
+  purchase_price: 500000
+  purchase_date: 2024-01-01
 
 two:
-  user: two
-  name: MyString
-  address: MyText
-  property_type: MyString
-  purchase_price: 9.99
-  purchase_date: 2025-11-13
+  user: lazaro_nixon
+  name: Another Property
+  address: 456 Oak St, San Francisco, CA 94117
+  property_type: Condo
+  purchase_price: 350000
+  purchase_date: 2024-06-01
