@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
   before_action :set_property
-  before_action :set_transaction, only: [:edit, :update, :destroy]
+  before_action :set_transaction, only: [ :edit, :update, :destroy ]
 
   def index
     @transactions = @property.transactions.order(date: :desc)
@@ -12,7 +12,7 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = @property.transactions.build(transaction_params)
-    
+
     if @transaction.save
       redirect_to property_transactions_path(@property), notice: "Transaction was successfully created."
     else

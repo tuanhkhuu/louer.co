@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  before_action :set_property, only: [:show, :edit, :update, :destroy]
+  before_action :set_property, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @properties = Current.user.properties.order(created_at: :desc)
@@ -15,7 +15,7 @@ class PropertiesController < ApplicationController
 
   def create
     @property = Current.user.properties.build(property_params)
-    
+
     if @property.save
       redirect_to @property, notice: "Property was successfully created."
     else

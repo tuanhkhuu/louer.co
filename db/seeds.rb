@@ -37,7 +37,7 @@ puts "Created 3 sample properties"
 # Create sample transactions for property1
 6.times do |i|
   month = i.months.ago
-  
+
   # Rent income
   property1.transactions.find_or_create_by!(
     transaction_type: "income",
@@ -47,7 +47,7 @@ puts "Created 3 sample properties"
     t.amount = 4500
     t.description = "Monthly rent payment"
   end
-  
+
   # Mortgage payment
   property1.transactions.find_or_create_by!(
     transaction_type: "expense",
@@ -57,7 +57,7 @@ puts "Created 3 sample properties"
     t.amount = 3200
     t.description = "Monthly mortgage payment"
   end
-  
+
   # Property tax (quarterly)
   if i % 3 == 0
     property1.transactions.find_or_create_by!(
@@ -69,7 +69,7 @@ puts "Created 3 sample properties"
       t.description = "Quarterly property tax"
     end
   end
-  
+
   # Insurance (annual)
   if i == 0
     property1.transactions.find_or_create_by!(
@@ -81,9 +81,9 @@ puts "Created 3 sample properties"
       t.description = "Annual property insurance"
     end
   end
-  
+
   # Occasional maintenance
-  if [1, 3, 5].include?(i)
+  if [ 1, 3, 5 ].include?(i)
     property1.transactions.find_or_create_by!(
       transaction_type: "expense",
       category: "Maintenance",
@@ -98,7 +98,7 @@ end
 # Create sample transactions for property2
 4.times do |i|
   month = i.months.ago
-  
+
   # Rent income
   property2.transactions.find_or_create_by!(
     transaction_type: "income",
@@ -108,7 +108,7 @@ end
     t.amount = 3200
     t.description = "Monthly rent payment"
   end
-  
+
   # HOA Fees
   property2.transactions.find_or_create_by!(
     transaction_type: "expense",
@@ -118,7 +118,7 @@ end
     t.amount = 450
     t.description = "Monthly HOA fees"
   end
-  
+
   # Mortgage payment
   property2.transactions.find_or_create_by!(
     transaction_type: "expense",
@@ -133,7 +133,7 @@ end
 # Create sample transactions for property3
 3.times do |i|
   month = i.months.ago
-  
+
   # Rent income
   property3.transactions.find_or_create_by!(
     transaction_type: "income",
@@ -143,7 +143,7 @@ end
     t.amount = 7500
     t.description = "Monthly commercial rent"
   end
-  
+
   # Property management
   property3.transactions.find_or_create_by!(
     transaction_type: "expense",
@@ -153,7 +153,7 @@ end
     t.amount = 750
     t.description = "Property management fee (10%)"
   end
-  
+
   # Utilities
   property3.transactions.find_or_create_by!(
     transaction_type: "expense",

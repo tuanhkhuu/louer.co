@@ -6,7 +6,7 @@ class Property < ApplicationRecord
   validates :property_type, presence: true
   validates :purchase_price, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
 
-  PROPERTY_TYPES = ["Single Family", "Multi-Family", "Condo", "Townhouse", "Commercial", "Land", "Other"].freeze
+  PROPERTY_TYPES = [ "Single Family", "Multi-Family", "Condo", "Townhouse", "Commercial", "Land", "Other" ].freeze
 
   def total_income
     transactions.where(transaction_type: "income").sum(:amount)

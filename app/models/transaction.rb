@@ -6,9 +6,9 @@ class Transaction < ApplicationRecord
   validates :amount, presence: true, numericality: { greater_than: 0 }
   validates :date, presence: true
 
-  INCOME_CATEGORIES = ["Rent", "Late Fees", "Parking", "Storage", "Pet Rent", "Other Income"].freeze
-  EXPENSE_CATEGORIES = ["Mortgage", "Insurance", "Property Tax", "HOA Fees", "Repairs", "Maintenance", 
-                        "Utilities", "Property Management", "Legal Fees", "Advertising", "Other Expense"].freeze
+  INCOME_CATEGORIES = [ "Rent", "Late Fees", "Parking", "Storage", "Pet Rent", "Other Income" ].freeze
+  EXPENSE_CATEGORIES = [ "Mortgage", "Insurance", "Property Tax", "HOA Fees", "Repairs", "Maintenance",
+                        "Utilities", "Property Management", "Legal Fees", "Advertising", "Other Expense" ].freeze
 
   scope :income, -> { where(transaction_type: "income") }
   scope :expenses, -> { where(transaction_type: "expense") }
