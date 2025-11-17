@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  property: one
+  transaction_type: income
+  category: Rent
+  amount: 2500
+  date: 2025-11-01
+  description: Monthly rent payment
+
+two:
+  property: one
+  transaction_type: expense
+  category: Mortgage
+  amount: 1800
+  date: 2025-11-01
+  description: Monthly mortgage payment

@@ -1,0 +1,164 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-900">Portfolio Dashboard</h1>
+    <p class="mt-2 text-sm text-gray-600">Welcome back! Here's an overview of your properties.</p>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+    <!-- Total Properties -->
+    <div class="bg-white overflow-hidden shadow rounded-lg">
+      <div class="p-5">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+          </div>
+          <div class="ml-5 w-0 flex-1">
+            <dl>
+              <dt class="text-sm font-medium text-gray-500 truncate">Total Properties</dt>
+              <dd class="text-lg font-semibold text-gray-900"><%= @total_properties %></dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Value -->
+    <div class="bg-white overflow-hidden shadow rounded-lg">
+      <div class="p-5">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="ml-5 w-0 flex-1">
+            <dl>
+              <dt class="text-sm font-medium text-gray-500 truncate">Total Value</dt>
+              <dd class="text-lg font-semibold text-gray-900"><%= number_to_currency(@total_value) %></dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Income -->
+    <div class="bg-white overflow-hidden shadow rounded-lg">
+      <div class="p-5">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <svg class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12" />
+            </svg>
+          </div>
+          <div class="ml-5 w-0 flex-1">
+            <dl>
+              <dt class="text-sm font-medium text-gray-500 truncate">Total Income</dt>
+              <dd class="text-lg font-semibold text-green-600"><%= number_to_currency(@total_income) %></dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Net Cash Flow -->
+    <div class="bg-white overflow-hidden shadow rounded-lg">
+      <div class="p-5">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <svg class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <div class="ml-5 w-0 flex-1">
+            <dl>
+              <dt class="text-sm font-medium text-gray-500 truncate">Net Cash Flow</dt>
+              <dd class="text-lg font-semibold <%= @net_cash_flow >= 0 ? 'text-green-600' : 'text-red-600' %>">
+                <%= number_to_currency(@net_cash_flow) %>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Properties List -->
+  <div class="bg-white shadow rounded-lg mb-8">
+    <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+      <h3 class="text-lg leading-6 font-medium text-gray-900">Your Properties</h3>
+      <%= link_to "Add Property", new_property_path, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700" %>
+    </div>
+    <div class="border-t border-gray-200">
+      <% if @properties.any? %>
+        <ul role="list" class="divide-y divide-gray-200">
+          <% @properties.each do |property| %>
+            <li>
+              <%= link_to property, class: "block hover:bg-gray-50" do %>
+                <div class="px-4 py-4 sm:px-6">
+                  <div class="flex items-center justify-between">
+                    <div class="flex-1 min-w-0">
+                      <p class="text-sm font-medium text-indigo-600 truncate"><%= property.name %></p>
+                      <p class="text-sm text-gray-500"><%= property.property_type %></p>
+                    </div>
+                    <div class="ml-5 flex-shrink-0 text-right">
+                      <p class="text-sm font-medium text-gray-900">
+                        <%= number_to_currency(property.purchase_price) %>
+                      </p>
+                      <p class="text-sm text-gray-500">
+                        Cash Flow: <span class="<%= property.net_cash_flow >= 0 ? 'text-green-600' : 'text-red-600' %>">
+                          <%= number_to_currency(property.net_cash_flow) %>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <div class="text-center py-12">
+          <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          <h3 class="mt-2 text-sm font-medium text-gray-900">No properties</h3>
+          <p class="mt-1 text-sm text-gray-500">Get started by adding a new property.</p>
+          <div class="mt-6">
+            <%= link_to "Add Property", new_property_path, class: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Recent Transactions -->
+  <% if @recent_transactions.any? %>
+    <div class="bg-white shadow rounded-lg">
+      <div class="px-4 py-5 sm:px-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">Recent Transactions</h3>
+      </div>
+      <div class="border-t border-gray-200">
+        <ul role="list" class="divide-y divide-gray-200">
+          <% @recent_transactions.each do |transaction| %>
+            <li class="px-4 py-4 sm:px-6">
+              <div class="flex items-center justify-between">
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-gray-900"><%= transaction.category %></p>
+                  <p class="text-sm text-gray-500"><%= transaction.property.name %> • <%= transaction.date.strftime("%b %d, %Y") %></p>
+                </div>
+                <div class="ml-5 flex-shrink-0">
+                  <span class="text-sm font-medium <%= transaction.transaction_type == 'income' ? 'text-green-600' : 'text-red-600' %>">
+                    <%= transaction.transaction_type == 'income' ? '+' : '-' %><%= number_to_currency(transaction.amount) %>
+                  </span>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</div>
